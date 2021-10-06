@@ -1,10 +1,10 @@
 package com.example.drools.demo.exception;
 
-public class NumberFormatException extends RuntimeException {
+public class AddressNotFoundException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
-	public NumberFormatException(String msg) {
+	public AddressNotFoundException(String msg) {
 		super(msg);
 	}
 

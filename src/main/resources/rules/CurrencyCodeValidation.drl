@@ -1,11 +1,11 @@
 package com.roytuts.spring.drools.rules
 
 import com.example.drools.demo.model.CurrencyCode;
-import com.example.drools.demo.exception.NumberFormatException;
+import com.example.drools.demo.exception.AddressNotFoundException;
 
 rule "CurrencyCodeValidation"
 	when
-		CurrencyCode(code != 0 && code matches "^[a-z]*$")
+		CurrencyCode(code != 0 && code not matches "^[a-zA-Z]*$")
 	then
-		throw new NumberFormatException("Invalid Currency Code. Must be a valid 2 letter alphabet.");
+		throw new AddressNotFoundException("Invalid Currency Code. Must be a valid 2 letter alphabet.");
 end

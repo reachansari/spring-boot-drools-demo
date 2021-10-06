@@ -16,7 +16,7 @@ public class RestExceptionHandler {
 	private ResponseEntity<ResponseError> handleEntityNotFound(AddressNotFoundException ex) {
 		ResponseError err = new ResponseError();
 		err.setCode(HttpStatus.NOT_FOUND.value());
-		err.setErrorMessages(Collections.singletonList(ex.getMessage()));
+		err.setErrorMessages(ex.getMessage());
 		return new ResponseEntity<>(err, HttpStatus.NOT_FOUND);
 	}
 

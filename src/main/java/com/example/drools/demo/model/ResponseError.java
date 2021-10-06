@@ -1,10 +1,9 @@
 package com.example.drools.demo.model;
 
-import java.util.List;
 
 public class ResponseError {
 	private Integer code;
-	private List<String> errorMessages;
+	private String errorMessages;
 
 	public Integer getCode() {
 		return code;
@@ -14,12 +13,14 @@ public class ResponseError {
 		this.code = code;
 	}
 
-	public List<String> getErrorMessages() {
+	public String getErrorMessages() {
 		return errorMessages;
 	}
 
-	public void setErrorMessages(List<String> errorMessages) {
+	public void setErrorMessages(String errorMessages) {
 		this.errorMessages = errorMessages;
 	}
+
+	
 
 }

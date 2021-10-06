@@ -12,32 +12,32 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.drools.demo.model.AreaPin;
+import com.example.drools.demo.model.CurrencyCode;
 
 @RestController
-public class AreaRestController {
+public class CurrencyController {
 
 	@Autowired
 	private KieContainer kieContainer;
 
-	@GetMapping("/area/name/{pinCode}")
-	public ResponseEntity<String> getAreaByPinCode(@PathVariable int pinCode) {
+	@GetMapping("/currencyCode/{code}")
+	public ResponseEntity<String> getAreaByPinCode(@PathVariable String code) {
 		KieSession kieSession = kieContainer.newKieSession();
-		kieSession.insert(new AreaPin(pinCode)); // which object to validate
+		kieSession.insert(new CurrencyCode(code)); // which object to validate
 		kieSession.fireAllRules(); // fire all rules defined into drool file (drl)
 		kieSession.dispose();
 
-		return new ResponseEntity<String>(getAreaByCode(pinCode), HttpStatus.OK);
+		return new ResponseEntity<String>(getCurrencyByCode(code), HttpStatus.OK);
 	}
 
-	private String getAreaByCode(int pin) {
-		final Map<Integer, String> areaMap = new HashMap<>();
+	private String getCurrencyByCode(String code) {
+		final Map<String, String> areaMap = new HashMap<>();
 
-		areaMap.put(700001, "BBD Bag");
-		areaMap.put(700010, "Beliaghata");
-		areaMap.put(700105, "Nabapally");
-		areaMap.put(700098, "Sukanta Nagar");
+		areaMap.put("USD", "US Dollar");
+		areaMap.put("SGD", "Singapore Dollar");
+		areaMap.put("INR", "Indian Rupees");
+		areaMap.put("IDR", "Indonesia Rupiah");
 
-		return areaMap.getOrDefault(pin, "Area not found");
+		return areaMap.getOrDefault(code, "Currency code not found");
 	}
 }

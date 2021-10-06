@@ -1,6 +1,5 @@
 package com.example.drools.demo.exception;
 
-import java.util.Collections;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
